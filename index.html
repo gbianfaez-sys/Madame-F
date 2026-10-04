@@ -1,0 +1,3532 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Une petite histoire ❤️</title>
+
+
+<style>
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root{
+
+    --pink:#ff8fb8;
+    --pink-light:#ffc1d7;
+    --purple:#a78bfa;
+
+    --white:#ffffff;
+    --text:#fff7fb;
+
+    --glass:rgba(30,12,35,.42);
+
+    --border:rgba(255,255,255,.18);
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+body{
+
+    min-height:100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+
+    /* CIEL COUCHER DE SOLEIL */
+
+    background:
+
+        radial-gradient(
+            circle at 50% 65%,
+            rgba(255,190,160,.95) 0%,
+            rgba(255,135,175,.70) 13%,
+            rgba(190,92,153,.50) 30%,
+            transparent 52%
+        ),
+
+        linear-gradient(
+            180deg,
+            #24152f 0%,
+            #5c275d 25%,
+            #a94f79 48%,
+            #e47f91 65%,
+            #ffb18d 77%,
+            #301a3d 100%
+        );
+
+    background-attachment:fixed;
+
+    transition:
+        background 3s ease;
+
+}
+
+
+/* =====================================================
+   CIEL ÉTOILÉ
+===================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:0;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.95) 0 1px,
+            transparent 1.5px
+        );
+
+    background-size:120px 120px;
+
+    background-position:
+        20px 20px;
+
+    opacity:.45;
+
+}
+
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:0;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.7) 0 1px,
+            transparent 1.5px
+        );
+
+    background-size:190px 190px;
+
+    background-position:
+        80px 50px;
+
+    opacity:.25;
+
+}
+
+
+/* =====================================================
+   SOLEIL
+===================================================== */
+
+.sun{
+
+    position:fixed;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    left:50%;
+    top:65%;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:
+
+        radial-gradient(
+            circle,
+            #fff8d8 0%,
+            #ffd6a5 25%,
+            #ff9e8f 55%,
+            rgba(255,126,170,.2) 75%,
+            transparent 76%
+        );
+
+    box-shadow:
+
+        0 0 40px #ffb58f,
+        0 0 100px rgba(255,135,170,.7),
+        0 0 180px rgba(255,100,180,.35);
+
+    z-index:0;
+
+    transition:
+
+        opacity 3s ease,
+        transform 3s ease,
+        top 3s ease;
+
+}
+
+
+/* =====================================================
+   LUNE
+===================================================== */
+
+.moon{
+
+    position:fixed;
+
+    width:110px;
+    height:110px;
+
+    right:10%;
+    top:10%;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff,
+            #f5ddeb 55%,
+            #d4b5d8
+        );
+
+    box-shadow:
+
+        0 0 30px rgba(255,220,240,.7),
+        0 0 80px rgba(255,170,220,.35);
+
+    opacity:0;
+
+    z-index:0;
+
+    transition:
+        opacity 3s ease;
+
+}
+
+
+/* =====================================================
+   MODE NUIT
+===================================================== */
+
+body.night{
+
+    background:
+
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(98,64,140,.35),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(95,45,110,.25),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            180deg,
+            #090615 0%,
+            #11091f 30%,
+            #1b0c2d 60%,
+            #08040f 100%
+        );
+
+}
+
+
+body.night .sun{
+
+    opacity:0;
+
+    top:90%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.5);
+
+}
+
+
+body.night .moon{
+
+    opacity:1;
+
+}
+
+
+/* =====================================================
+   NUIT PROFONDE
+===================================================== */
+
+body.deep-night{
+
+    background:
+
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(77,54,130,.25),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            180deg,
+            #030207 0%,
+            #080511 45%,
+            #050309 100%
+        );
+
+}
+
+
+body.deep-night::before{
+
+    opacity:.8;
+
+}
+
+
+body.deep-night::after{
+
+    opacity:.55;
+
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.screen{
+
+    min-height:100vh;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:
+        60px 20px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+.screen.active{
+
+    display:flex;
+
+    animation:
+        pageIn .9s ease;
+
+}
+
+
+.container{
+
+    width:
+        min(850px,100%);
+
+    text-align:center;
+
+    position:relative;
+
+}
+
+
+@keyframes pageIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(35px)
+            scale(.97);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   TYPOGRAPHIE
+===================================================== */
+
+.eyebrow{
+
+    color:#ffd1e2;
+
+    font-size:12px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    margin-bottom:22px;
+
+    text-shadow:
+        0 0 15px rgba(255,160,200,.5);
+
+}
+
+
+h1{
+
+    font-size:
+        clamp(55px,13vw,105px);
+
+    line-height:.88;
+
+    margin-bottom:30px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #fff,
+            #ffd9e8,
+            #ff9fc5,
+            #c4b5fd
+        );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+}
+
+
+h2{
+
+    font-size:
+        clamp(28px,6vw,50px);
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+}
+
+
+.lead{
+
+    color:#f5e8ef;
+
+    font-size:18px;
+
+    line-height:1.75;
+
+    max-width:650px;
+
+    margin:
+        0 auto 30px;
+
+    text-shadow:
+        0 2px 15px rgba(0,0,0,.3);
+
+}
+
+
+/* =====================================================
+   BOUTONS
+===================================================== */
+
+button{
+
+    font:inherit;
+
+}
+
+
+.btn{
+
+    border:none;
+
+    color:white;
+
+    padding:
+        16px 26px;
+
+    border-radius:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ff78a9,
+            #c084fc
+        );
+
+    box-shadow:
+        0 10px 35px rgba(255,100,170,.30);
+
+    transition:.3s ease;
+
+}
+
+
+.btn:hover{
+
+    transform:
+        translateY(-4px)
+        scale(1.02);
+
+    box-shadow:
+        0 15px 45px rgba(255,100,180,.45);
+
+}
+
+
+.choice{
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    background:
+        rgba(40,15,45,.38);
+
+    color:white;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    backdrop-filter:
+        blur(12px);
+
+    transition:.3s ease;
+
+}
+
+
+.choice:hover{
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,190,220,.6);
+
+    background:
+        rgba(255,255,255,.12);
+
+}
+
+
+.hidden{
+
+    display:none !important;
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress{
+
+    width:
+        min(500px,100%);
+
+    height:5px;
+
+    background:
+        rgba(255,255,255,.12);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin:
+        0 auto 35px;
+
+}
+
+
+.progress span{
+
+    display:block;
+
+    height:100%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #ff7fab,
+            #c084fc
+        );
+
+    transition:.6s;
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+.choices{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:14px;
+
+    max-width:650px;
+
+    margin:
+        30px auto;
+
+}
+
+
+.response{
+
+    min-height:120px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:25px;
+
+    margin:
+        20px auto;
+
+    border:
+        1px solid rgba(255,255,255,.16);
+
+    border-radius:24px;
+
+    background:
+        rgba(35,13,40,.42);
+
+    backdrop-filter:
+        blur(18px);
+
+    color:#fff0f6;
+
+    line-height:1.7;
+
+    white-space:pre-line;
+
+}
+
+
+/* =====================================================
+   INDICES
+===================================================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:15px;
+
+    max-width:650px;
+
+    margin:
+        30px auto;
+
+}
+
+
+.card{
+
+    color:white;
+
+    text-align:left;
+
+    padding:23px;
+
+    border-radius:22px;
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    background:
+        rgba(40,15,45,.38);
+
+    backdrop-filter:
+        blur(15px);
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+}
+
+
+.card:hover{
+
+    transform:
+        translateY(-4px);
+
+    background:
+        rgba(255,255,255,.10);
+
+    border-color:
+        rgba(255,190,220,.5);
+
+}
+
+
+.card strong{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:18px;
+
+}
+
+
+.card small{
+
+    color:#e7ccd9;
+
+}
+
+
+/* =====================================================
+   ÉTOILES
+===================================================== */
+
+.star-area{
+
+    position:relative;
+
+    width:
+        min(700px,100%);
+
+    height:430px;
+
+    margin:
+        20px auto;
+
+    border-radius:35px;
+
+    overflow:hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255,190,215,.08),
+            transparent 55%
+        );
+
+}
+
+
+.star{
+
+    position:absolute;
+
+    width:60px;
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.15),
+            transparent 65%
+        );
+
+    color:white;
+
+    font-size:35px;
+
+    cursor:pointer;
+
+    z-index:10;
+
+    transition:.3s ease;
+
+    text-shadow:
+
+        0 0 8px white,
+        0 0 20px #ffc4df,
+        0 0 40px #ff8fba;
+
+    animation:
+        starPulse 2.2s infinite;
+
+}
+
+
+.star:hover{
+
+    transform:
+        scale(1.4);
+
+    color:#ffd9e9;
+
+    text-shadow:
+
+        0 0 10px white,
+        0 0 30px #ff8fba,
+        0 0 60px #ff72ac;
+
+}
+
+
+.star:nth-child(1){
+
+    left:8%;
+    top:15%;
+
+}
+
+
+.star:nth-child(2){
+
+    left:35%;
+    top:8%;
+
+}
+
+
+.star:nth-child(3){
+
+    right:8%;
+    top:18%;
+
+}
+
+
+.star:nth-child(4){
+
+    left:20%;
+    top:55%;
+
+}
+
+
+.star:nth-child(5){
+
+    right:27%;
+    top:48%;
+
+}
+
+
+.star:nth-child(6){
+
+    left:48%;
+    bottom:7%;
+
+}
+
+
+.star:nth-child(7){
+
+    right:7%;
+    bottom:17%;
+
+}
+
+
+@keyframes starPulse{
+
+    0%,100%{
+
+        opacity:1;
+
+        transform:
+            scale(1);
+
+    }
+
+    50%{
+
+        opacity:.55;
+
+        transform:
+            scale(1.12);
+
+    }
+
+}
+
+
+/* =====================================================
+   GALERIE
+===================================================== */
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:25px;
+
+    margin:
+        40px auto;
+
+    max-width:800px;
+
+}
+
+
+.polaroid{
+
+    position:relative;
+
+    padding:
+        12px 12px 25px;
+
+    background:#fff;
+
+    border-radius:4px;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.35);
+
+    cursor:pointer;
+
+    color:#35202e;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+
+}
+
+
+.polaroid:nth-child(1){
+
+    transform:
+        rotate(-4deg);
+
+}
+
+
+.polaroid:nth-child(2){
+
+    transform:
+        rotate(3deg);
+
+}
+
+
+.polaroid:nth-child(3){
+
+    transform:
+        rotate(2deg);
+
+}
+
+
+.polaroid:nth-child(4){
+
+    transform:
+        rotate(-3deg);
+
+}
+
+
+.polaroid:hover{
+
+    transform:
+        rotate(0)
+        scale(1.06)
+        translateY(-10px);
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.45);
+
+    z-index:5;
+
+}
+
+
+.polaroid img{
+
+    width:100%;
+
+    height:240px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+
+.polaroid p{
+
+    font-family:
+        "Comic Sans MS",
+        cursive;
+
+    margin-top:13px;
+
+    font-size:15px;
+
+}
+
+
+/* =====================================================
+   LIGHTBOX
+===================================================== */
+
+.lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        rgba(8,3,15,.92);
+
+    backdrop-filter:
+        blur(15px);
+
+    z-index:100;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+}
+
+
+.lightbox.active{
+
+    display:flex;
+
+    animation:
+        fadeIn .4s ease;
+
+}
+
+
+.lightbox img{
+
+    max-width:90vw;
+
+    max-height:85vh;
+
+    object-fit:contain;
+
+    border-radius:8px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.7);
+
+}
+
+
+.close-lightbox{
+
+    position:absolute;
+
+    top:25px;
+
+    right:30px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
+    background:
+        rgba(255,255,255,.1);
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:25px;
+
+}
+
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+/* =====================================================
+   MUSIQUE
+===================================================== */
+
+.music-box{
+
+    width:
+        min(520px,100%);
+
+    margin:
+        35px auto;
+
+    padding:30px;
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    border-radius:30px;
+
+    background:
+        rgba(25,10,35,.45);
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.2);
+
+}
+
+
+.album{
+
+    width:180px;
+    height:180px;
+
+    margin:
+        0 auto 25px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:
+        5px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 0 50px rgba(255,130,190,.3);
+
+}
+
+
+.album img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+.album.playing{
+
+    animation:
+        vinyl 7s linear infinite;
+
+}
+
+
+@keyframes vinyl{
+
+    from{
+        transform:rotate(0);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+.song-title{
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    margin-bottom:7px;
+
+}
+
+
+.song-subtitle{
+
+    color:#d9c5d2;
+
+    margin-bottom:25px;
+
+}
+
+
+.music-controls{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+.play-btn{
+
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ff78a9,
+            #c084fc
+        );
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:25px;
+
+    box-shadow:
+        0 10px 35px rgba(255,100,170,.35);
+
+    transition:.3s;
+
+}
+
+
+.play-btn:hover{
+
+    transform:
+        scale(1.1);
+
+}
+
+
+.music-progress{
+
+    width:100%;
+
+    height:5px;
+
+    margin-top:25px;
+
+    background:
+        rgba(255,255,255,.15);
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+}
+
+
+.music-progress span{
+
+    display:block;
+
+    width:0%;
+
+    height:100%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #ff7fab,
+            #c084fc
+        );
+
+}
+
+
+.music-time{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#cdbbc7;
+
+    font-size:12px;
+
+    margin-top:8px;
+
+}
+
+
+/* =====================================================
+   MESSAGE APRÈS MUSIQUE
+===================================================== */
+
+.music-message{
+
+    max-width:650px;
+
+    margin:
+        35px auto;
+
+    min-height:80px;
+
+    padding:25px;
+
+    border-radius:25px;
+
+    background:
+        rgba(35,13,40,.42);
+
+    border:
+        1px solid rgba(255,255,255,.16);
+
+    backdrop-filter:
+        blur(18px);
+
+    color:#ffeaf3;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    opacity:0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+
+.music-message.show{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.music-message.reveal{
+
+    animation:
+        messageGlow 2s ease;
+
+}
+
+
+@keyframes messageGlow{
+
+    0%{
+
+        box-shadow:
+            0 0 0
+            rgba(255,120,180,0);
+
+    }
+
+    50%{
+
+        box-shadow:
+            0 0 45px
+            rgba(255,120,180,.35);
+
+    }
+
+    100%{
+
+        box-shadow:
+            0 0 0
+            rgba(255,120,180,0);
+
+    }
+
+}
+
+
+/* =====================================================
+   LETTRE
+===================================================== */
+
+.letter-box{
+
+    max-width:700px;
+
+    margin:
+        40px auto;
+
+    padding:
+        45px 35px;
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    border-radius:30px;
+
+    background:
+        rgba(30,10,35,.45);
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.25);
+
+    text-align:left;
+
+}
+
+
+.letter-line{
+
+    opacity:0;
+
+    transform:
+        translateY(15px);
+
+    margin-bottom:20px;
+
+    color:#f8eaf1;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    animation:
+        letterAppear .8s forwards;
+
+}
+
+
+.letter-line:nth-child(1){
+
+    animation-delay:.2s;
+
+}
+
+
+.letter-line:nth-child(2){
+
+    animation-delay:1.4s;
+
+}
+
+
+.letter-line:nth-child(3){
+
+    animation-delay:2.6s;
+
+}
+
+
+.letter-line:nth-child(4){
+
+    animation-delay:3.8s;
+
+}
+
+
+.letter-line:nth-child(5){
+
+    animation-delay:5s;
+
+}
+
+
+@keyframes letterAppear{
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   QUESTION FINALE
+===================================================== */
+
+.question-final{
+
+    font-size:
+        clamp(35px,7vw,65px);
+
+    margin:
+        35px 0;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            white,
+            #ffbfd7,
+            #c4b5fd
+        );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+}
+
+
+.actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+
+}
+
+
+#finalAnswer{
+
+    margin-top:30px;
+
+    color:#ffd1e2;
+
+    min-height:80px;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
+
+
+.signature{
+
+    margin-top:35px;
+
+    color:#e8c9d8;
+
+    font-style:italic;
+
+}
+
+
+.restart{
+
+    margin-top:25px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    color:#f3dce7;
+
+    padding:
+        12px 18px;
+
+    border-radius:13px;
+
+    cursor:pointer;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:600px){
+
+    .choices,
+    .cards,
+    .gallery{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .star-area{
+
+        height:330px;
+
+    }
+
+
+    .star{
+
+        width:52px;
+        height:52px;
+
+        font-size:28px;
+
+    }
+
+
+    .polaroid img{
+
+        height:280px;
+
+    }
+
+
+    .letter-box{
+
+        padding:
+            30px 22px;
+
+    }
+
+
+    .moon{
+
+        width:75px;
+        height:75px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     DÉCOR
+===================================================== -->
+
+<div class="sun"></div>
+
+<div class="moon"></div>
+
+
+
+<!-- =====================================================
+     01 — ACCUEIL
+===================================================== -->
+
+<section
+    class="screen active"
+    id="home"
+>
+
+<div class="container">
+
+    <div class="eyebrow">
+        Mission confidentielle
+    </div>
+
+    <h1>
+        Tu as<br>
+        une mission.
+    </h1>
+
+    <p class="lead">
+        Une personne a retenu mon attention.<br>
+        Ta mission : découvrir pourquoi.
+    </p>
+
+    <button
+        class="btn"
+        onclick="goTo('quiz')"
+    >
+        COMMENCER LA MISSION →
+    </button>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     02 — QUIZ
+===================================================== -->
+
+<section
+    class="screen"
+    id="quiz"
+>
+
+<div class="container">
+
+    <div class="progress">
+
+        <span style="width:15%"></span>
+
+    </div>
+
+
+    <div class="eyebrow">
+        Niveau 01 · Première impression
+    </div>
+
+
+    <h2>
+        Qu’est-ce qui attire généralement
+        ton attention chez quelqu’un ?
+    </h2>
+
+
+    <div class="choices">
+
+
+        <button
+            class="choice"
+            onclick="choose('regard')"
+        >
+            👀 Son regard
+        </button>
+
+
+        <button
+            class="choice"
+            onclick="choose('humour')"
+        >
+            😂 Son humour
+        </button>
+
+
+        <button
+            class="choice"
+            onclick="choose('parler')"
+        >
+            💬 Sa façon de parler
+        </button>
+
+
+        <button
+            class="choice"
+            onclick="choose('energie')"
+        >
+            ✨ Son énergie
+        </button>
+
+
+    </div>
+
+
+    <div
+        class="response"
+        id="quizResponse"
+    >
+        Choisis une réponse pour découvrir
+        ton premier indice.
+    </div>
+
+
+    <button
+        class="btn hidden"
+        id="quizNext"
+        onclick="goTo('clues')"
+    >
+        INDICE SUIVANT →
+    </button>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     03 — INDICES
+===================================================== -->
+
+<section
+    class="screen"
+    id="clues"
+>
+
+<div class="container">
+
+
+    <div class="progress">
+
+        <span style="width:30%"></span>
+
+    </div>
+
+
+    <div class="eyebrow">
+        Niveau 02 · Les indices
+    </div>
+
+
+    <h2>
+        Il fallait bien quelques indices.
+    </h2>
+
+
+    <p class="lead">
+        Ouvre les cartes qui t’intriguent.
+    </p>
+
+
+    <div class="cards">
+
+
+        <button
+            class="card"
+            onclick="openClue('energie',this)"
+        >
+
+            <strong>
+                ✨ Son énergie
+            </strong>
+
+            <small>
+                Un indice à découvrir
+            </small>
+
+        </button>
+
+
+        <button
+            class="card"
+            onclick="openClue('regard',this)"
+        >
+
+            <strong>
+                👀 Son regard
+            </strong>
+
+            <small>
+                Un indice à découvrir
+            </small>
+
+        </button>
+
+
+        <button
+            class="card"
+            onclick="openClue('humour',this)"
+        >
+
+            <strong>
+                😂 Son humour
+            </strong>
+
+            <small>
+                Un indice à découvrir
+            </small>
+
+        </button>
+
+
+        <button
+            class="card"
+            onclick="openClue('parler',this)"
+        >
+
+            <strong>
+                💬 Sa façon de parler
+            </strong>
+
+            <small>
+                Un indice à découvrir
+            </small>
+
+        </button>
+
+
+    </div>
+
+
+    <div
+        class="response"
+        id="clueResponse"
+    >
+        0 / 3 indices découverts.
+    </div>
+
+
+    <button
+        class="btn hidden"
+        id="clueNext"
+        onclick="goTo('stars')"
+    >
+        DERNIÈRE MISSION →
+    </button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     04 — ÉTOILES
+===================================================== -->
+
+<section
+    class="screen"
+    id="stars"
+>
+
+<div class="container">
+
+
+    <div class="progress">
+
+        <span style="width:45%"></span>
+
+    </div>
+
+
+    <div class="eyebrow">
+        Dernière mission · Une lettre dans les étoiles
+    </div>
+
+
+    <h2>
+        Certaines choses sont plus faciles
+        à dire comme ça.
+    </h2>
+
+
+    <p class="lead">
+        Clique sur les étoiles, une par une.
+    </p>
+
+
+    <div class="star-area">
+
+
+        <button
+            type="button"
+            class="star"
+            onclick="starClicked(1,this)"
+        >
+            ✦
+        </button>
+
+
+        <button
+            type="button"
+            class="star"
+            onclick="starClicked(2,this)"
+        >
+            ✦
+        </button>
+
+
+        <button
+            type="button"
+            class="star"
+            onclick="starClicked(3,this)"
+        >
+            ✦
+        </button>
+
+
+        <button
+            type="button"
+            class="star"
+            onclick="starClicked(4,this)"
+        >
+            ✦
+        </button>
+
+
+        <button
+            type="button"
+            class="star"
+            onclick="starClicked(5,this)"
+        >
+            ✦
+        </button>
+
+
+        <button
+            type="button"
+            class="star"
+            onclick="starClicked(6,this)"
+        >
+            ✦
+        </button>
+
+
+        <button
+            type="button"
+            class="star"
+            onclick="starClicked(7,this)"
+        >
+            ✦
+        </button>
+
+
+    </div>
+
+
+    <div
+        class="response"
+        id="letterStar"
+    >
+        La première étoile attend ton clic.
+    </div>
+
+
+    <p id="starCounter">
+        0 / 7 étoiles découvertes
+    </p>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     05 — REVEAL
+===================================================== -->
+
+<section
+    class="screen"
+    id="final"
+>
+
+<div class="container">
+
+
+    <div class="eyebrow">
+        Mission accomplie
+    </div>
+
+
+    <h2>
+        Bon…
+    </h2>
+
+
+    <p class="lead">
+        Je vais arrêter de faire semblant
+        d’être mystérieux.
+    </p>
+
+
+    <div class="final-text">
+
+        Tu me plais genre un peu juste un peu genre 11/10 comme ça. ❤️
+
+    </div>
+
+
+    <p class="lead">
+
+        Et j’aimerais simplement apprendre
+        à mieux te connaître.
+
+    </p>
+
+
+    <button
+        class="btn"
+        onclick="goTo('gallery')"
+    >
+        J'AI ENCORE QUELQUE CHOSE À TE MONTRER →
+    </button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     06 — GALERIE
+===================================================== -->
+
+<section
+    class="screen"
+    id="gallery"
+>
+
+<div class="container">
+
+
+    <div class="eyebrow">
+        Chapitre 01 · Quelques souvenirs
+    </div>
+
+
+    <h2>
+        Parce qu'il y a des personnes
+        qu'on aime simplement regarder.
+    </h2>
+
+
+    <p class="lead">
+        Et toi… tu fais partie de ces personnes.
+    </p>
+
+
+    <div class="gallery">
+
+
+        <div
+            class="polaroid"
+            onclick="openPhoto('images/photo1.jpg')"
+        >
+
+            <img
+                src="images/photo1.jpg"
+                alt="Photo 1"
+            >
+
+            <p>
+                Un sourire qui reste en tête.
+            </p>
+
+        </div>
+
+
+        <div
+            class="polaroid"
+            onclick="openPhoto('images/photo2.jpg')"
+        >
+
+            <img
+                src="images/photo2.jpg"
+                alt="Photo 2"
+            >
+
+            <p>
+                Il y a quelque chose chez toi.
+            </p>
+
+        </div>
+
+
+        <div
+            class="polaroid"
+            onclick="openPhoto('images/photo3.jpg')"
+        >
+
+            <img
+                src="images/photo3.jpg"
+                alt="Photo 3"
+            >
+
+            <p>
+                Difficile de ne pas remarquer.
+            </p>
+
+        </div>
+
+
+        <div
+            class="polaroid"
+            onclick="openPhoto('images/photo4.jpg')"
+        >
+
+            <img
+                src="images/photo4.jpg"
+                alt="Photo 4"
+            >
+
+            <p>
+                Et peut-être que c'est ça
+                qui me plaît.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="goTo('music')"
+    >
+        J'AI UNE CHANSON POUR TOI 🎵
+    </button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     07 — MUSIQUE
+===================================================== -->
+
+<section
+    class="screen"
+    id="music"
+>
+
+<div class="container">
+
+
+    <div class="eyebrow">
+        Chapitre 02 · Une chanson
+    </div>
+
+
+    <h2>
+        Cette chanson me fait penser à toi. 🎵
+    </h2>
+
+
+    <p class="lead">
+
+        Mets tes écouteurs…
+        et laisse simplement la musique jouer.
+
+    </p>
+
+
+    <div class="music-box">
+
+
+        <div class="album">
+
+            <img
+                src="images/music-cover.jpg"
+                alt="Pochette"
+            >
+
+        </div>
+
+
+        <div class="song-title">
+            Une chanson pour toi
+        </div>
+
+
+        <div class="song-subtitle">
+
+            Parce que certaines personnes
+            ont leur propre bande-son.
+
+        </div>
+
+
+        <audio
+            id="audio"
+            src="music/song.mp3"
+        ></audio>
+
+
+        <div class="music-controls">
+
+            <button
+                class="play-btn"
+                id="playBtn"
+                onclick="toggleMusic()"
+            >
+                ▶
+            </button>
+
+        </div>
+
+
+        <div
+            class="music-progress"
+            onclick="seekMusic(event)"
+        >
+
+            <span
+                id="musicProgress"
+            ></span>
+
+        </div>
+
+
+        <div class="music-time">
+
+            <span id="currentTime">
+                0:00
+            </span>
+
+            <span id="duration">
+                0:00
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- MESSAGE QUI APPARAÎT APRÈS LA MUSIQUE -->
+
+    <div
+        id="musicMessage"
+        class="music-message"
+    >
+        Quand tu es prête… ❤️
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="finishMusic()"
+    >
+        J'AI FINI D'ÉCOUTER →
+    </button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     08 — MESSAGE / LETTRE
+===================================================== -->
+
+<section
+    class="screen"
+    id="letter"
+>
+
+<div class="container">
+
+
+    <div class="eyebrow">
+        Chapitre 03 · Une dernière chose
+    </div>
+
+
+    <h2>
+        Je voulais juste te dire quelque chose.
+    </h2>
+
+
+    <div class="letter-box">
+
+
+        <p class="letter-line">
+
+            Je ne sais pas exactement où cette
+            histoire peut mener.
+
+        </p>
+
+
+        <p class="letter-line">
+
+            Je ne sais même pas si tu ressentiras
+            la même chose.
+
+        </p>
+
+
+        <p class="letter-line">
+
+            Mais je sais une chose…
+
+        </p>
+
+
+        <p class="letter-line">
+
+            J'avais envie que tu saches que
+            tu comptes déjà un peu pour moi.
+
+        </p>
+
+
+        <p class="letter-line">
+
+            Et peut-être que le plus intéressant
+            maintenant, c'est de voir où cette
+            histoire peut nous mener. ❤️
+
+        </p>
+
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="goToQuestion()"
+    >
+        J'AI UNE DERNIÈRE QUESTION →
+    </button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     09 — QUESTION FINALE
+===================================================== -->
+
+<section
+    class="screen"
+    id="question"
+>
+
+<div class="container">
+
+
+    <div class="eyebrow">
+        Dernier niveau
+    </div>
+
+
+    <h2>
+        Alors…
+    </h2>
+
+
+    <div class="question-final">
+        On prend le temps d'écrire la suite ?
+    </div>
+
+
+    <p class="lead">
+
+        Pas besoin d'avoir toutes les réponses.
+        Un petit début suffit.
+
+    </p>
+
+
+    <div class="actions">
+
+
+        <button
+            class="btn"
+            onclick="finalAnswer('yes')"
+        >
+            ❤️ Pourquoi pas
+        </button>
+
+
+        <button
+            class="choice"
+            onclick="finalAnswer('maybe')"
+        >
+            🌙 Laisse moi voir
+        </button>
+
+
+    </div>
+
+
+    <div
+        id="finalAnswer"
+    ></div>
+
+
+    <div class="signature">
+
+        — Ton expert comtable et commissaire aux comptes préféré!
+                              07/10/2026.
+
+    </div>
+
+
+    <button
+        class="restart"
+        onclick="location.reload()"
+    >
+        ↻ Recommencer l'histoire
+    </button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LIGHTBOX
+===================================================== -->
+
+<div
+    class="lightbox"
+    id="lightbox"
+    onclick="closePhoto()"
+>
+
+
+    <button
+        class="close-lightbox"
+        onclick="closePhoto()"
+    >
+        ×
+    </button>
+
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Photo agrandie"
+    >
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function goTo(id){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+
+            screen.classList.remove("active");
+
+        });
+
+
+    const target =
+        document.getElementById(id);
+
+
+    if(!target){
+
+        console.error(
+            "Section introuvable :",
+            id
+        );
+
+        return;
+
+    }
+
+
+    target.classList.add("active");
+
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+
+    /*
+       Le ciel commence à devenir sombre
+       à partir des étoiles.
+    */
+
+    if(
+
+        id === "stars" ||
+        id === "final" ||
+        id === "gallery" ||
+        id === "music" ||
+        id === "letter"
+
+    ){
+
+        document
+            .body
+            .classList
+            .add("night");
+
+    }
+
+}
+
+
+/* =====================================================
+   QUESTION FINALE
+===================================================== */
+
+function goToQuestion(){
+
+    /*
+       Ici on passe en NUIT PROFONDE.
+       Le ciel devient vraiment sombre.
+    */
+
+    document
+        .body
+        .classList
+        .add("night");
+
+
+    setTimeout(()=>{
+
+        document
+            .body
+            .classList
+            .add("deep-night");
+
+    },1500);
+
+
+    goTo("question");
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const quizAnswers = {
+
+
+    regard:
+
+    `Alors tu remarques les regards… intéressant. 👀
+
+    Parce que je dois t’avouer que le tien
+    ne m’a pas vraiment laissé indifférent.`,
+
+
+    humour:
+
+    `L’humour ? Je comprends. 😂
+
+    Mais quelque chose me dit que tu vas finir
+    par remarquer que j’aime particulièrement le tien.`,
+
+
+    parler:
+
+    `La façon de parler… voilà un choix intéressant. 💬
+
+    Peut-être parce que certaines conversations
+    donnent envie de durer un peu plus longtemps.`,
+
+
+    energie:
+
+    `L’énergie, hein ? ✨
+
+    Alors tu comprendras peut-être pourquoi
+    la tienne m’a intrigué dès le départ.`
+
+};
+
+
+function choose(answer){
+
+    document
+        .getElementById("quizResponse")
+        .innerText =
+        quizAnswers[answer];
+
+
+    document
+        .getElementById("quizNext")
+        .classList
+        .remove("hidden");
+
+}
+
+
+
+/* =====================================================
+   INDICES
+===================================================== */
+
+const clues = {
+
+
+    energie:
+
+    `Ton énergie a quelque chose
+    de difficile à ignorer.
+
+    Même quand tu ne fais rien de particulier,
+    ta douceur d'âme en dit long.`,
+
+
+    regard:
+
+    `Il y a quelque chose dans ton regard
+    qui reste un peu trop facilement en tête.`,
+
+
+    humour:
+
+    `Ton humour est probablement l’une
+    des raisons pour lesquelles j’aime
+    autant quand une conversation avec toi s’installe.`,
+
+
+    parler:
+
+    `Ta manière de parler donne envie
+    de continuer la conversation,
+    même quand on n’avait aucune raison
+    de la prolonger.`
+
+};
+
+
+let discovered =
+    new Set();
+
+
+function openClue(type,element){
+
+    discovered.add(type);
+
+
+    element.style.borderColor =
+        "rgba(255,190,220,.8)";
+
+
+    element
+        .querySelector("small")
+        .innerText =
+        "✓ Indice découvert";
+
+
+    document
+        .getElementById("clueResponse")
+        .innerText =
+
+        clues[type]
+
+        +
+
+        "\n\n"
+
+        +
+
+        discovered.size
+
+        +
+
+        " / 3 indices découverts.";
+
+
+    if(discovered.size >= 3){
+
+        document
+            .getElementById("clueNext")
+            .classList
+            .remove("hidden");
+
+    }
+
+}
+
+
+
+/* =====================================================
+   ÉTOILES
+===================================================== */
+
+const starMessages = {
+
+
+    1:
+    "Certaines personnes arrivent dans notre vie sans prévenir.",
+
+
+    2:
+    "Et parfois, sans vraiment comprendre pourquoi, elles commencent à prendre une place particulière.",
+
+
+    3:
+    "Puis on commence à vouloir les connaître un peu plus.",
+
+
+    4:
+    "À remarquer certains petits détails.",
+
+
+    5:
+    "À repenser à certaines conversations.",
+
+
+    6:
+    "Et finalement, on réalise qu’une personne nous plaît vraiment.",
+
+
+    7:
+    "Et cette personne dont je me suis épris… c’est toi."
+
+};
+
+
+let currentStar = 1;
+
+
+function starClicked(number,element){
+
+
+    /*
+       Mauvaise étoile
+    */
+
+    if(number !== currentStar){
+
+        element.animate(
+
+            [
+
+                {
+                    transform:"translateX(0)"
+                },
+
+                {
+                    transform:"translateX(-8px)"
+                },
+
+                {
+                    transform:"translateX(8px)"
+                },
+
+                {
+                    transform:"translateX(0)"
+                }
+
+            ],
+
+            {
+                duration:300
+            }
+
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Bonne étoile
+    */
+
+    document
+        .getElementById("letterStar")
+        .innerText =
+        starMessages[number];
+
+
+    element.style.opacity =
+        ".15";
+
+
+    element.style.pointerEvents =
+        "none";
+
+
+    element.animate(
+
+        [
+
+            {
+                transform:"scale(1)"
+            },
+
+            {
+                transform:"scale(1.8)",
+                opacity:1
+            },
+
+            {
+                transform:"scale(.7)",
+                opacity:.15
+            }
+
+        ],
+
+        {
+            duration:600
+        }
+
+    );
+
+
+    document
+        .getElementById("starCounter")
+        .innerText =
+
+        currentStar
+        +
+        " / 7 étoiles découvertes";
+
+
+    currentStar++;
+
+
+    /*
+       Après la dernière étoile
+    */
+
+    if(number === 7){
+
+        setTimeout(()=>{
+
+            goTo("final");
+
+        },1800);
+
+    }
+
+}
+
+
+
+/* =====================================================
+   GALERIE
+===================================================== */
+
+function openPhoto(src){
+
+    const lightbox =
+        document.getElementById("lightbox");
+
+
+    const image =
+        document.getElementById("lightboxImage");
+
+
+    image.src =
+        src;
+
+
+    lightbox
+        .classList
+        .add("active");
+
+}
+
+
+function closePhoto(){
+
+    document
+        .getElementById("lightbox")
+        .classList
+        .remove("active");
+
+}
+
+
+document
+    .getElementById("lightboxImage")
+    .addEventListener(
+        "click",
+        function(event){
+
+            event.stopPropagation();
+
+        }
+    );
+
+
+
+/* =====================================================
+   MUSIQUE
+===================================================== */
+
+const audio =
+    document.getElementById("audio");
+
+
+const playBtn =
+    document.getElementById("playBtn");
+
+
+const album =
+    document.querySelector(".album");
+
+
+const musicProgress =
+    document.getElementById("musicProgress");
+
+
+const currentTime =
+    document.getElementById("currentTime");
+
+
+const duration =
+    document.getElementById("duration");
+
+
+
+function toggleMusic(){
+
+    if(audio.paused){
+
+        audio
+            .play()
+            .then(()=>{
+
+                playBtn.innerText =
+                    "❚❚";
+
+                album
+                    .classList
+                    .add("playing");
+
+            })
+            .catch(error=>{
+
+                console.log(
+                    "Lecture audio impossible :",
+                    error
+                );
+
+            });
+
+    }
+
+    else{
+
+        audio.pause();
+
+
+        playBtn.innerText =
+            "▶";
+
+
+        album
+            .classList
+            .remove("playing");
+
+    }
+
+}
+
+
+
+/* =====================================================
+   AUDIO — TEMPS
+===================================================== */
+
+audio.addEventListener(
+    "loadedmetadata",
+    function(){
+
+        duration.innerText =
+            formatTime(
+                audio.duration
+            );
+
+    }
+);
+
+
+audio.addEventListener(
+    "timeupdate",
+    function(){
+
+        if(!audio.duration){
+
+            return;
+
+        }
+
+
+        const percentage =
+
+            (
+                audio.currentTime
+                /
+                audio.duration
+            )
+            *
+            100;
+
+
+        musicProgress.style.width =
+            percentage + "%";
+
+
+        currentTime.innerText =
+            formatTime(
+                audio.currentTime
+            );
+
+    }
+);
+
+
+audio.addEventListener(
+    "ended",
+    function(){
+
+        playBtn.innerText =
+            "▶";
+
+
+        album
+            .classList
+            .remove("playing");
+
+
+        musicProgress.style.width =
+            "0%";
+
+    }
+);
+
+
+
+function formatTime(seconds){
+
+    if(isNaN(seconds)){
+
+        return "0:00";
+
+    }
+
+
+    const minutes =
+        Math.floor(
+            seconds / 60
+        );
+
+
+    const secs =
+        Math.floor(
+            seconds % 60
+        );
+
+
+    return (
+
+        minutes
+        +
+        ":"
+        +
+        String(secs)
+            .padStart(2,"0")
+
+    );
+
+}
+
+
+
+/* =====================================================
+   BARRE DE MUSIQUE
+===================================================== */
+
+function seekMusic(event){
+
+    if(!audio.duration){
+
+        return;
+
+    }
+
+
+    const rect =
+        event
+            .currentTarget
+            .getBoundingClientRect();
+
+
+    const percentage =
+
+        (
+            event.clientX
+            -
+            rect.left
+        )
+        /
+        rect.width;
+
+
+    audio.currentTime =
+
+        percentage
+        *
+        audio.duration;
+
+}
+
+
+
+/* =====================================================
+   APRÈS LA MUSIQUE
+===================================================== */
+
+function finishMusic(){
+
+    const message =
+        document
+            .getElementById(
+                "musicMessage"
+            );
+
+
+    message.innerText =
+
+    `Je ne sais pas si cette chanson
+    te fera penser à moi après ça…
+
+    Mais j'espère qu'elle te fera
+    au moins sourire. ❤️`;
+
+
+    message
+        .classList
+        .add("show");
+
+
+    message
+        .classList
+        .add("reveal");
+
+
+    /*
+       On arrête la musique.
+    */
+
+    if(!audio.paused){
+
+        audio.pause();
+
+        playBtn.innerText =
+            "▶";
+
+        album
+            .classList
+            .remove("playing");
+
+    }
+
+
+    /*
+       On laisse le message
+       quelques secondes à l'écran.
+    */
+
+    setTimeout(()=>{
+
+        goTo("letter");
+
+    },4000);
+
+}
+
+
+
+/* =====================================================
+   REPONSE FINALE
+===================================================== */
+
+function finalAnswer(answer){
+
+    const box =
+        document
+            .getElementById(
+                "finalAnswer"
+            );
+
+
+    if(answer === "yes"){
+
+
+        box.innerText =
+
+        `Alors peut-être que cette histoire
+        mérite vraiment une chance. ❤️
+
+        Et je serai tres heureux de marcher à ton rythme 
+        MADAME.`;
+
+
+        createHearts();
+
+    }
+
+
+    else{
+
+
+        box.innerText =
+
+        `Prends ton temps. Ton Rythme est le mien
+        je veux bien faire les choses j'ai tout le temps🌙
+
+        Je voulais simplement que tu saches
+        à quel point tu comptes pour moi.`;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   PLUIE DE COEURS
+===================================================== */
+
+function createHearts(){
+
+
+    for(
+        let i = 0;
+        i < 20;
+        i++
+    ){
+
+
+        const heart =
+            document.createElement("div");
+
+
+        heart.innerHTML =
+            "❤️";
+
+
+        heart.style.position =
+            "fixed";
+
+
+        heart.style.left =
+
+            Math.random()
+            *
+            100
+            +
+            "%";
+
+
+        heart.style.bottom =
+            "-30px";
+
+
+        heart.style.fontSize =
+
+            (
+                15
+                +
+                Math.random()
+                *
+                20
+            )
+            +
+            "px";
+
+
+        heart.style.zIndex =
+            "200";
+
+
+        heart.style.pointerEvents =
+            "none";
+
+
+        document
+            .body
+            .appendChild(heart);
+
+
+        heart.animate(
+
+            [
+
+                {
+
+                    transform:
+                        "translateY(0) scale(.5)",
+
+                    opacity:0
+
+                },
+
+                {
+
+                    transform:
+
+                        `translateY(-${
+                            window.innerHeight * .8
+                        }px)
+                        scale(1.2)`,
+
+                    opacity:1
+
+                },
+
+                {
+
+                    transform:
+
+                        `translateY(-${
+                            window.innerHeight
+                        }px)
+                        scale(.7)`,
+
+                    opacity:0
+
+                }
+
+            ],
+
+            {
+
+                duration:
+                    3500
+                    +
+                    Math.random()*2500,
+
+                easing:
+                    "ease-out"
+
+            }
+
+        );
+
+
+        setTimeout(
+
+            ()=>{
+                heart.remove();
+            },
+
+            6500
+
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
